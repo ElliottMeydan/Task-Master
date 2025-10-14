@@ -1,6 +1,6 @@
 # Task Master
-## What is task master?
-### Task Master is a small solo project I have created for handling high workloads and managing tasks to be flexible and efficient. This software is predominantly based for University students that struggle with the workload, and can be used across a multiple courses.
+## What is Task Master?
+#### Not the show, Task Master is a small solo project I have created for handling high workloads and managing tasks to be flexible and efficient. This software is predominantly based for University students that struggle with the workload, and can be used across a multiple courses.
 ### Features include:
 * Organising tasks by order.
 * Adding priority to tasks to understand the importance of certain tasks.
