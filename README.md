@@ -4,8 +4,11 @@
 ### Features include:
 * Organising tasks by order.
 * Adding priority to tasks to understand the importance of certain tasks.
-* Personalising task appearance for personal impressiveness.
 * Adding time and date deadlines to tasks to ensure they are fufilled.
 * Rewarding productivity with small rewards.
-# Version 0.0
-### Nothing has been added, as of yet.
+# Version 0.1
+### Task addition has been added. Priority, deadline (still in work), task title, completion status and hidden reward claim have all been added to this build of the program, only in data structure. Task data structure has also been added. All files have been added to this repo too.
+# Version 0.2 (Proposed features)
+* Added in deadlines for tasks
+* Adding a delete function for completed tasks
+* Storing the tasks so they are not removed upon each launch
