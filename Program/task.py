@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, date
 from dataclasses import dataclass
 
 @dataclass
@@ -7,7 +7,7 @@ from dataclasses import dataclass
 class task_data:
     title: str
     priority: int
-   # deadline: datetime
+    deadline: date
     completed: bool = False
     reward_claimed: bool = False
 
