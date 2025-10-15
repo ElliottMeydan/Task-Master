@@ -7,12 +7,6 @@
 * Adding priority to tasks to understand the importance of certain tasks.
 * Adding time and date deadlines to tasks to ensure they are fufilled.
 * Rewarding productivity with small rewards.
-
-# Version 0.2
-* Added in deadlines for tasks
-* Adding a delete function for completed tasks
-* Uncheck and check tasks
-
-# Version 0.3 (Proposal)
+# Version 0.3
 * Added Task Descriptions.
 * Tasks are now stored and will be imported.
