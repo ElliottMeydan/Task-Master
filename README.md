@@ -8,7 +8,7 @@
 * Adding time and date deadlines to tasks to ensure they are fufilled.
 * Rewarding productivity with small rewards.
 
-# Version 0.2 (Proposed features)
+# Version 0.2
 * Added in deadlines for tasks
 * Adding a delete function for completed tasks
 * Uncheck and check tasks
