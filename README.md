@@ -12,3 +12,7 @@
 * Added in deadlines for tasks
 * Adding a delete function for completed tasks
 * Uncheck and check tasks
+
+# Version 0.3 (Proposal)
+* Added Task Descriptions.
+* Tasks are now stored and will be imported.

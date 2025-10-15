@@ -1,15 +1,23 @@
+#!/usr/bin/env python3
 import tkinter as tk
 from tkinter import messagebox, simpledialog
 from task import task_data   
-from datetime import datetime
+from datetime import datetime, date
+import json
+import os
+
+TASKS_FILE = "tasks.json"
+
 
 class TaskApp(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Task Master")
-        self.geometry("500x400")
+        self.geometry("1920x1080")
         self.tasks = []
         self.create_widgets()
+        self.load_tasks()
+        self.protocol("WM_DELETE_WINDOW", self.on_close)
     def create_widgets(self):
         self.add_button = tk.Button(self, text="Add Task", command=self.add_task)
         self.add_button.pack(pady=10)
@@ -24,6 +32,27 @@ class TaskApp(tk.Tk):
         self.complete_button.pack(pady=10)
 
 
+    # Save tasks function #
+
+    def save_tasks(self):
+        with open(TASKS_FILE, "w") as f:
+            json.dump([t.to_dict() for t in self.tasks], f, indent=2, default=str)
+
+    def on_close(self):
+        self.save_tasks()
+        self.destroy()
+
+
+    #Loading task function #
+
+    def load_tasks(self):
+        if os.path.exists(TASKS_FILE):
+            with open(TASKS_FILE, "r") as f:
+                data = json.load(f)
+                self.tasks = [task_data.from_dict(d) for d in data]
+                self.refresh_tasks()
+
+
     # Add task function #
 
     def add_task(self):
@@ -32,12 +61,16 @@ class TaskApp(tk.Tk):
             return
         priority = simpledialog.askinteger("Priority", "Enter priority (1-5):", minvalue=1, maxvalue=5)
         deadline_str = simpledialog.askstring("Deadline", "Enter deadline (YYYY-MM-DD):")
+        has_description_bool = messagebox.askyesno("Task Description", "Do you want to add a description?")
+        description_str = ""
+        if has_description_bool:
+            description_str = simpledialog.askstring("Description", "Enter task description:") 
         try:
             deadline = datetime.strptime(deadline_str, "%Y-%m-%d").date()
         except Exception:
             messagebox.showerror("Invalid Date", "Please enter a valid date in YYYY-MM-DD format.")
             return
-        task = task_data(title, priority, deadline)
+        task = task_data(title, priority, deadline, False, has_description_bool, description_str)
         self.tasks.append(task)
         self.refresh_tasks()
 
@@ -53,19 +86,19 @@ class TaskApp(tk.Tk):
     
      # Refresh function #     
     def refresh_tasks(self):
-        self.tasks.sort(key=lambda t: (t.completed, t.priority, t.deadline if t.deadline else datetime.date.max ))
+        self.tasks.sort(key=lambda t: (t.completed, t.priority, t.description, t.deadline if t.deadline else datetime.date.max ))
         self.task_listbox.delete(0, tk.END)
         for task in self.tasks:
             status = "✓" if task.completed else "✗"
             deadline_str = task.deadline.strftime("%Y-%m-%d") if task.deadline else "No deadline"
-            display = f"[{status}] {task.title} (Priority: {task.priority} Deadline: {deadline_str})"
+            display = f"[{status}] {task.title} (Priority: {task.priority} Deadline: {deadline_str}) Description: {task.description}"
             self.task_listbox.insert(tk.END, display)
 
     # Task completion check box function #
     def complete_task(self):
         index = self.task_listbox.curselection()
         if not index:
-             return
+            return
         task = self.tasks[index[0]]
         task.completed = not task.completed
         self.refresh_tasks()
