@@ -1,6 +1,6 @@
 [Desktop Entry]
 Version=1.0
 Name= Task Master
-Exec=/home/phalanxdock/Documents/Programs/Task_Master/Task-Master/Program/main.py
-Icon=/home/phalanxdock/Documents/Programs/Task_Master/Task-Master/Program/TaskMaster.jpg
+Exec=/YOURLOCATION/Task-Master/Program/main.py
+Icon=/YOURLOCATION/Task-Master/Program/TaskMaster.jpg
 Type=Application
