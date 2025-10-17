@@ -6,7 +6,12 @@
 * Organising tasks by order.
 * Adding priority to tasks to understand the importance of certain tasks.
 * Adding time and date deadlines to tasks to ensure they are fufilled.
-* Rewarding productivity with small rewards.
-# Version 0.3
-* Added Task Descriptions.
-* Tasks are now stored and will be imported.
+
+# Version 1.0
+##### OFFICIAL RELEASE
+* Added option of dates
+* Window is now sized down for the corner of the user's screen
+* Added application logo
+* Now runnable as an executeable
+* Added some new UI features.
+
